@@ -1,0 +1,47 @@
+<% include ../views/tp.html %>
+<link rel="stylesheet" href="/video6.2.5.js/css/video-js.css"/>
+</head>
+<body>
+<div class="container"><h2><%= title %></h2></div>
+
+<div class="container" id="videopay"></div>
+<br/>
+<div class="container">
+    <ul id="videolist"></ul>
+</div>
+
+
+<div id="listjson" style="display: none"><%= movlist %></div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var listjson = JSON.parse($("#listjson").text());
+        //console.log(listjson);
+        for (var i in listjson) {
+            $("#videolist").append(function () {
+                var albumlist = '';
+                albumlist += '<li value="' + listjson[i]['dir'] + '">' + listjson[i]['dir'] + '</li>';
+                return (albumlist);
+            });
+        }
+        $("#videolist li").click(function () {
+            //console.log($(this).text());
+            $("#videopay").empty();
+            $.post('/showvideo', {
+                'videoNumber': $(this).text(),
+                'movname': $('title').text(),
+
+            }, function (data) {
+                $("#videopay").append(data);
+            });
+        });
+
+
+    })
+
+
+</script>
+
+
+<% include ../views/bt.html %>

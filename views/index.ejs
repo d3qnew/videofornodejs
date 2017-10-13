@@ -1,0 +1,43 @@
+<% include ../views/tp.html %>
+</head>
+
+<body>
+
+<div class="container"><h2>专辑列表</h2></div>
+
+<div class="container">
+    <ul id="videolist"></ul>
+</div>
+<form id="goplay" action="/videoplay" method="post" style="display: none;">
+    <input id="movname" name="movname" value="">
+</form>
+<div id="listjson" style="display: none"><%= movlist %></div>
+
+<script type="text/javascript" src="/javascripts/lib/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#videolist").empty();
+        var listjson = JSON.parse($("#listjson").text());
+
+        for (var i in listjson) {
+            $("#videolist").append(function () {
+                var albumlist = '';
+                albumlist += '<li value="' + listjson[i]['dir'] + '">' + listjson[i]['dir'] + '</li>';
+                return (albumlist);
+            });
+        }
+        $("#videolist li").click(function () {
+            //console.log($(this).text());
+            $("#movname").val($(this).text());
+            //console.log($("#movname").val());
+            $("#goplay").submit();
+        });
+
+
+    })
+
+
+</script>
+
+
+<% include ../views/bt.html %>

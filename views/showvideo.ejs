@@ -1,0 +1,39 @@
+<style>
+    .m {
+        width: 740px;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vjs-text-track-display div div div {
+        color: #ffa309 !important;
+        background-color: transparent !important;
+        font-size: 1.5em !important;
+    }
+
+</style>
+
+
+<div class="m">
+    <video id="my-video" class="video-js vjs-big-play-centered " controls preload="none" width="740" height="400"
+           data-setup="{}">
+        <source src="mov/<%= movname %>/<%= number %>.mp4" type="video/mp4">
+        <!-- 字幕 -->
+        <track kind="captions" mode="" src="mov/<%= movname %>/<%= number %>.vtt" srclang="en" label="English" default>
+    </video>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var myPlayer = videojs("my-video");
+            videojs("my-video").ready(function () {
+                var myPlayer = this;
+                myPlayer.play();
+            });
+
+        });
+
+
+    </script>
+</div>
+<script type="text/javascript" src="/video6.2.5.js/js/video.min.js"></script>
+
