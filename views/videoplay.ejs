@@ -1,8 +1,17 @@
 <% include ../views/tp.html %>
 <link rel="stylesheet" href="/video6.2.5.js/css/video-js.css"/>
+<style>
+    #title{width: 740px;}
+    #title a{
+       font-size: 30px;float:right;}
+    #title h2{display: block;position: absolute;z-index: -1000; }
+</style>
 </head>
 <body>
-<div class="container"><h2><%= title %></h2></div>
+<div class="container" id="title">
+    <h2><%= title %></h2>
+    <a href="/">HOME</a>
+</div>
 
 <div class="container" id="videopay"></div>
 <br/>
@@ -33,7 +42,9 @@
                 'movname': $('title').text(),
 
             }, function (data) {
+                //console.log(data);
                 $("#videopay").append(data);
+
             });
         });
 

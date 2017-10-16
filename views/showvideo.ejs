@@ -11,6 +11,8 @@
         background-color: transparent !important;
         font-size: 1.5em !important;
     }
+    
+
 
 </style>
 
@@ -29,6 +31,8 @@
                 var myPlayer = this;
                 myPlayer.play();
             });
+
+            $("#title h2").text('<%= movname %>'+'/'+'<%= number %>');
 
         });
 

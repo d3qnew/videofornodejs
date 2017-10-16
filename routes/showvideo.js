@@ -8,7 +8,7 @@ router.post('/', function (req, res, next) {
     //console.log(req.body['videoNumber']);
     res.render('showvideo', {
         movname: req.body['movname'],
-        number: req.body['videoNumber'],
+        number: req.body['videoNumber']
     });
 });
 

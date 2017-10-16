@@ -37,6 +37,7 @@ function movdir(dir, fuc) {
 // videoplay
 router.post('/', function (req, res, next) {
     movdir(req.body['movname'], function () {
+        //console.log(req.body);
         res.render(
             'videoplay',
             {
